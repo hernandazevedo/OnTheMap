@@ -14,6 +14,8 @@
 		9F16EA522340F43B00C4A9C1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F16EA502340F43B00C4A9C1 /* LaunchScreen.storyboard */; };
 		9F16EA5D23437A2100C4A9C1 /* AddLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F16EA5C23437A2100C4A9C1 /* AddLocationViewController.swift */; };
 		9F16EA5F2343809600C4A9C1 /* CompleteLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F16EA5E2343809600C4A9C1 /* CompleteLocationViewController.swift */; };
+		9F16EA612343BC7A00C4A9C1 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F16EA602343BC7A00C4A9C1 /* MapViewController.swift */; };
+		9F16EA632343BC9800C4A9C1 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F16EA622343BC9800C4A9C1 /* TableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		9F16EA532340F43B00C4A9C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9F16EA5C23437A2100C4A9C1 /* AddLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLocationViewController.swift; sourceTree = "<group>"; };
 		9F16EA5E2343809600C4A9C1 /* CompleteLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteLocationViewController.swift; sourceTree = "<group>"; };
+		9F16EA602343BC7A00C4A9C1 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		9F16EA622343BC9800C4A9C1 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +80,8 @@
 				9F16EA492340F43A00C4A9C1 /* LoginViewController.swift */,
 				9F16EA5C23437A2100C4A9C1 /* AddLocationViewController.swift */,
 				9F16EA5E2343809600C4A9C1 /* CompleteLocationViewController.swift */,
+				9F16EA602343BC7A00C4A9C1 /* MapViewController.swift */,
+				9F16EA622343BC9800C4A9C1 /* TableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -166,8 +172,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				9F16EA5F2343809600C4A9C1 /* CompleteLocationViewController.swift in Sources */,
+				9F16EA632343BC9800C4A9C1 /* TableViewController.swift in Sources */,
 				9F16EA4A2340F43A00C4A9C1 /* LoginViewController.swift in Sources */,
 				9F16EA482340F43A00C4A9C1 /* AppDelegate.swift in Sources */,
+				9F16EA612343BC7A00C4A9C1 /* MapViewController.swift in Sources */,
 				9F16EA5D23437A2100C4A9C1 /* AddLocationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

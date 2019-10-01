@@ -17,9 +17,13 @@ class CompleteLocationViewController: UIViewController {
         navigateToTabBarViewController()
     }
     
-    func navigateToTabBarViewController() {
-        if let tabBarController = self.navigationController?.viewControllers[1] as? UITabBarController {
-            self.navigationController?.popToViewController(tabBarController, animated: true)
-        }
+    
+    @IBAction func backNavigationClicked(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
     }
+    
+    func navigateToTabBarViewController() {
+        self.navigationController?.popToRootViewController(animated: true)
+    }
+    
 }
