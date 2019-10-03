@@ -13,10 +13,8 @@ class AddLocationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    @IBAction func addLocationClicked(_ sender: Any) {
-        
-    }
-    @IBAction func cancelClicked(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+
+    @IBAction func cancelNavigationClicked(_ sender: Any) {
+        self.navigationController?.popToRootViewController(animated: true)
     }
 }
