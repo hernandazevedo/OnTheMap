@@ -18,6 +18,7 @@ class CompleteLocationViewController: UIViewController {
         annotation.coordinate = coordinate
         annotation.title = "Southern Pines, NC"
         self.mapView.addAnnotation(annotation)
+
         self.mapView.delegate = self
     }
     
@@ -50,7 +51,7 @@ extension CompleteLocationViewController : MKMapViewDelegate {
             pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
             pinView!.canShowCallout = true
             pinView!.pinTintColor = .red
-            pinView!.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+            pinView!.rightCalloutAccessoryView = UIButton(type: .roundedRect)
         }
         else {
             pinView!.annotation = annotation
