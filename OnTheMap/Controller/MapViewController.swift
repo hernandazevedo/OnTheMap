@@ -41,6 +41,11 @@ class MapViewController: UIViewController {
         self.mapView.addAnnotations(annotations)
         self.mapView.delegate = self
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        self.mapView.showAnnotations(mapView.annotations, animated: true)
+    }
 
     private func navigateToAddLocationViewController() {
         if let vc = storyboard?.instantiateViewController(withIdentifier: "AddLocationViewController") {
