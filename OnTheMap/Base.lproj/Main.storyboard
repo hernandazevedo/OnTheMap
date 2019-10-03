@@ -107,9 +107,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Lmz-qT-1Fy">
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lmz-qT-1Fy">
                                 <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <navigationItem title="On The Map" id="ki1-V9-cVO">
                                         <barButtonItem key="leftBarButtonItem" title="LOGOUT" id="8eI-qH-6G7"/>
@@ -124,12 +123,27 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="34l-jb-ST1">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                            </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Lmz-qT-1Fy" firstAttribute="top" secondItem="VMX-HW-TMZ" secondAttribute="top" id="6ON-uk-mqv"/>
+                            <constraint firstItem="Lmz-qT-1Fy" firstAttribute="trailing" secondItem="34l-jb-ST1" secondAttribute="trailing" id="8KS-UT-rdd"/>
+                            <constraint firstItem="34l-jb-ST1" firstAttribute="top" secondItem="Lmz-qT-1Fy" secondAttribute="bottom" id="9T4-aS-SNU"/>
+                            <constraint firstItem="Lmz-qT-1Fy" firstAttribute="leading" secondItem="34l-jb-ST1" secondAttribute="leading" id="HiW-yf-B99"/>
+                            <constraint firstItem="34l-jb-ST1" firstAttribute="leading" secondItem="VMX-HW-TMZ" secondAttribute="leading" id="Svd-XI-K8a"/>
+                            <constraint firstItem="VMX-HW-TMZ" firstAttribute="trailing" secondItem="34l-jb-ST1" secondAttribute="trailing" id="Vto-Ed-yBJ"/>
+                            <constraint firstItem="VMX-HW-TMZ" firstAttribute="bottom" secondItem="34l-jb-ST1" secondAttribute="bottom" id="opy-yH-bIp"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="VMX-HW-TMZ"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item 1" image="icon_mapview-deselected" selectedImage="icon_mapview-selected" id="zgg-HA-tK6"/>
                     <navigationItem key="navigationItem" id="fd0-c6-8pH"/>
+                    <connections>
+                        <outlet property="mapView" destination="34l-jb-ST1" id="JWq-ee-EFX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9qg-G4-QVX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -327,7 +341,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dKK-Ho-OLL" userLabel="FINISH">
-                                <rect key="frame" x="32" y="798" width="350" height="30"/>
+                                <rect key="frame" x="32" y="800" width="350" height="30"/>
                                 <color key="backgroundColor" red="0.28318023679999998" green="0.61966240409999995" blue="0.78826183080000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <state key="normal" title="FINISH">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -342,9 +356,8 @@
                                     <action selector="loginClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="45m-Lt-R3x"/>
                                 </connections>
                             </button>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="S1T-m3-GC8">
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S1T-m3-GC8">
                                 <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <navigationItem title="Add Location" id="KGi-ux-3xW">
                                         <barButtonItem key="leftBarButtonItem" title="Add Location" image="icon_back-arrow" id="y3f-EH-qVp">
@@ -355,20 +368,33 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="6Dt-ah-NDg">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                            </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Lmk-v3-7mq" firstAttribute="trailing" secondItem="dKK-Ho-OLL" secondAttribute="trailing" constant="32" id="0rh-or-16M"/>
-                            <constraint firstItem="Lmk-v3-7mq" firstAttribute="bottom" secondItem="dKK-Ho-OLL" secondAttribute="bottom" constant="34" id="Ozy-rv-f2p"/>
+                            <constraint firstItem="Lmk-v3-7mq" firstAttribute="bottom" secondItem="dKK-Ho-OLL" secondAttribute="bottom" constant="32" id="Ozy-rv-f2p"/>
+                            <constraint firstItem="6Dt-ah-NDg" firstAttribute="leading" secondItem="Lmk-v3-7mq" secondAttribute="leading" id="TEN-Ye-xLg"/>
                             <constraint firstItem="dKK-Ho-OLL" firstAttribute="leading" secondItem="Lmk-v3-7mq" secondAttribute="leading" constant="32" id="Xvi-sh-H4J"/>
+                            <constraint firstItem="S1T-m3-GC8" firstAttribute="leading" secondItem="6Dt-ah-NDg" secondAttribute="leading" id="cgE-yQ-SFa"/>
+                            <constraint firstItem="6Dt-ah-NDg" firstAttribute="bottom" secondItem="Lmk-v3-7mq" secondAttribute="bottom" id="h4s-Kb-ebe"/>
+                            <constraint firstItem="S1T-m3-GC8" firstAttribute="top" secondItem="Lmk-v3-7mq" secondAttribute="top" id="hae-eD-zvO"/>
+                            <constraint firstItem="6Dt-ah-NDg" firstAttribute="top" secondItem="S1T-m3-GC8" secondAttribute="bottom" id="hle-1i-pFL"/>
+                            <constraint firstItem="6Dt-ah-NDg" firstAttribute="trailing" secondItem="Lmk-v3-7mq" secondAttribute="trailing" id="iPv-lw-vpf"/>
+                            <constraint firstItem="S1T-m3-GC8" firstAttribute="trailing" secondItem="6Dt-ah-NDg" secondAttribute="trailing" id="rkL-7Y-NzI"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Lmk-v3-7mq"/>
                     </view>
                     <navigationItem key="navigationItem" id="8h3-s1-I5C"/>
+                    <connections>
+                        <outlet property="mapView" destination="6Dt-ah-NDg" id="VbQ-yW-DAN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pr9-jl-u82" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4916" y="-233"/>
+            <point key="canvasLocation" x="4915.9420289855079" y="-233.03571428571428"/>
         </scene>
     </scenes>
     <resources>
