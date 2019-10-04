@@ -16,6 +16,7 @@
 		9F16EA5F2343809600C4A9C1 /* CompleteLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F16EA5E2343809600C4A9C1 /* CompleteLocationViewController.swift */; };
 		9F16EA612343BC7A00C4A9C1 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F16EA602343BC7A00C4A9C1 /* MapViewController.swift */; };
 		9F16EA632343BC9800C4A9C1 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F16EA622343BC9800C4A9C1 /* TableViewController.swift */; };
+		9F16EA672347575500C4A9C1 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F16EA662347575500C4A9C1 /* RoundedButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		9F16EA5E2343809600C4A9C1 /* CompleteLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteLocationViewController.swift; sourceTree = "<group>"; };
 		9F16EA602343BC7A00C4A9C1 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		9F16EA622343BC9800C4A9C1 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		9F16EA662347575500C4A9C1 /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 		9F16EA5B234379AB00C4A9C1 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				9F16EA662347575500C4A9C1 /* RoundedButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -175,6 +178,7 @@
 				9F16EA632343BC9800C4A9C1 /* TableViewController.swift in Sources */,
 				9F16EA4A2340F43A00C4A9C1 /* LoginViewController.swift in Sources */,
 				9F16EA482340F43A00C4A9C1 /* AppDelegate.swift in Sources */,
+				9F16EA672347575500C4A9C1 /* RoundedButton.swift in Sources */,
 				9F16EA612343BC7A00C4A9C1 /* MapViewController.swift in Sources */,
 				9F16EA5D23437A2100C4A9C1 /* AddLocationViewController.swift in Sources */,
 			);

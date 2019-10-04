@@ -39,17 +39,12 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="26f-mv-Bzf">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="26f-mv-Bzf" customClass="RoundedButton" customModule="OnTheMap" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="92" width="350" height="30"/>
                                         <color key="backgroundColor" red="0.28318023681640625" green="0.61966240406036377" blue="0.78826183080673218" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <state key="normal" title="LOG IN">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="5"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="loginClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="BZz-2C-cNX"/>
                                         </connections>
@@ -276,17 +271,12 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" textContentType="url"/>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NGX-Kl-GyA" userLabel="FIND A LOCATION">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NGX-Kl-GyA" userLabel="FIND A LOCATION" customClass="RoundedButton" customModule="OnTheMap" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="92" width="350" height="30"/>
                                         <color key="backgroundColor" red="0.28318023679999998" green="0.61966240409999995" blue="0.78826183080000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <state key="normal" title="FIND A LOCATION">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="5"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="loginClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9zC-7y-yBE"/>
                                             <segue destination="0Gb-nU-vzn" kind="show" id="iDx-K6-RlM"/>
@@ -355,17 +345,12 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="6Dt-ah-NDg">
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                             </mapView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dKK-Ho-OLL" userLabel="FINISH">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dKK-Ho-OLL" userLabel="FINISH" customClass="RoundedButton" customModule="OnTheMap" customModuleProvider="target">
                                 <rect key="frame" x="32" y="800" width="350" height="30"/>
                                 <color key="backgroundColor" red="0.28318023679999998" green="0.61966240409999995" blue="0.78826183080000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <state key="normal" title="FINISH">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="5"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="finishClicked:" destination="0Gb-nU-vzn" eventType="touchUpInside" id="KqE-gO-xSd"/>
                                     <action selector="loginClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="45m-Lt-R3x"/>
