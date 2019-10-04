@@ -9,13 +9,18 @@
 import UIKit
 
 class LoginViewController: UIViewController {
-
+    
+    @IBAction func signUpClicked(_ sender: Any) {
+        ApplicationUtils.openUrl(url: Constants.signUpUrl)
+    }
+    
     @IBAction func loginClicked(_ sender: Any) {
         
-        //mock sucess of login
+        // Login success
         performSegue(withIdentifier: "loginSegue", sender: nil)
 
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
