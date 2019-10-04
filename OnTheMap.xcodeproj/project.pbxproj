@@ -19,6 +19,10 @@
 		9F16EA672347575500C4A9C1 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F16EA662347575500C4A9C1 /* RoundedButton.swift */; };
 		9F16EA692347597A00C4A9C1 /* ApplicationUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F16EA682347597A00C4A9C1 /* ApplicationUtils.swift */; };
 		9F16EA6B23475B3E00C4A9C1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F16EA6A23475B3E00C4A9C1 /* Constants.swift */; };
+		9F51EF11234763A9007F3075 /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F51EF10234763A9007F3075 /* ApiClient.swift */; };
+		9F51EF132347678A007F3075 /* SessionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F51EF122347678A007F3075 /* SessionResponse.swift */; };
+		9F51EF1923476AE3007F3075 /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F51EF1823476AE3007F3075 /* LoginRequest.swift */; };
+		9F51EF1D23476E75007F3075 /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F51EF1C23476E75007F3075 /* ErrorResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +40,10 @@
 		9F16EA662347575500C4A9C1 /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		9F16EA682347597A00C4A9C1 /* ApplicationUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ApplicationUtils.swift; path = ../Model/ApplicationUtils.swift; sourceTree = "<group>"; };
 		9F16EA6A23475B3E00C4A9C1 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		9F51EF10234763A9007F3075 /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
+		9F51EF122347678A007F3075 /* SessionResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionResponse.swift; sourceTree = "<group>"; };
+		9F51EF1823476AE3007F3075 /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
+		9F51EF1C23476E75007F3075 /* ErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +103,9 @@
 		9F16EA5A234379A500C4A9C1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				9F51EF1723476AC3007F3075 /* Api Requests */,
+				9F51EF0F2347639C007F3075 /* Api Client */,
+				9F51EF142347678E007F3075 /* Api Responses */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -107,6 +118,31 @@
 				9F16EA6A23475B3E00C4A9C1 /* Constants.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		9F51EF0F2347639C007F3075 /* Api Client */ = {
+			isa = PBXGroup;
+			children = (
+				9F51EF10234763A9007F3075 /* ApiClient.swift */,
+			);
+			path = "Api Client";
+			sourceTree = "<group>";
+		};
+		9F51EF142347678E007F3075 /* Api Responses */ = {
+			isa = PBXGroup;
+			children = (
+				9F51EF122347678A007F3075 /* SessionResponse.swift */,
+				9F51EF1C23476E75007F3075 /* ErrorResponse.swift */,
+			);
+			path = "Api Responses";
+			sourceTree = "<group>";
+		};
+		9F51EF1723476AC3007F3075 /* Api Requests */ = {
+			isa = PBXGroup;
+			children = (
+				9F51EF1823476AE3007F3075 /* LoginRequest.swift */,
+			);
+			path = "Api Requests";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -180,8 +216,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F51EF132347678A007F3075 /* SessionResponse.swift in Sources */,
 				9F16EA5F2343809600C4A9C1 /* CompleteLocationViewController.swift in Sources */,
 				9F16EA632343BC9800C4A9C1 /* TableViewController.swift in Sources */,
+				9F51EF1923476AE3007F3075 /* LoginRequest.swift in Sources */,
 				9F16EA4A2340F43A00C4A9C1 /* LoginViewController.swift in Sources */,
 				9F16EA482340F43A00C4A9C1 /* AppDelegate.swift in Sources */,
 				9F16EA672347575500C4A9C1 /* RoundedButton.swift in Sources */,
@@ -189,6 +227,8 @@
 				9F16EA692347597A00C4A9C1 /* ApplicationUtils.swift in Sources */,
 				9F16EA5D23437A2100C4A9C1 /* AddLocationViewController.swift in Sources */,
 				9F16EA6B23475B3E00C4A9C1 /* Constants.swift in Sources */,
+				9F51EF11234763A9007F3075 /* ApiClient.swift in Sources */,
+				9F51EF1D23476E75007F3075 /* ErrorResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

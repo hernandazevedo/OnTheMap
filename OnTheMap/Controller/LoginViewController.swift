@@ -20,10 +20,17 @@ class LoginViewController: UIViewController {
     
     @IBAction func loginClicked(_ sender: Any) {
         
-        // Login success
-        performSegue(withIdentifier: "loginSegue", sender: nil)
-//        ApplicationUtils.showError(viewController: self, title: "Login Error", message: "Usuario invalido")
-
+        ApiClient.login(username: emailTextField.text ?? "", password: passwordTextField.text ?? "", completion: handleLoginResponse(success:error:))
+    }
+    
+    func handleLoginResponse(success: Bool, error: Error?) {
+        setLoggingIn(false)
+        if success {
+            // Login success
+            performSegue(withIdentifier: "loginSegue", sender: nil)
+        } else {
+            ApplicationUtils.showError(viewController: self, title: "Login Error", message: error?.localizedDescription ?? "")
+        }
     }
     
     func setLoggingIn(_ loggingIn: Bool) {
