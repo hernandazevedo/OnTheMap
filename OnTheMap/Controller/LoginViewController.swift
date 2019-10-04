@@ -22,6 +22,7 @@ class LoginViewController: UIViewController {
         
         // Login success
         performSegue(withIdentifier: "loginSegue", sender: nil)
+//        ApplicationUtils.showError(viewController: self, title: "Login Error", message: "Usuario invalido")
 
     }
     

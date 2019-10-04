@@ -15,4 +15,10 @@ class ApplicationUtils {
             app.open(URL(string: toOpen)!, options: [:], completionHandler: nil)
         }
     }
+    
+    static func showError(viewController: UIViewController, title: String ,message: String) {
+            let alertVC = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            alertVC.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            viewController.show(alertVC, sender: nil)
+    }
 }
