@@ -25,7 +25,7 @@
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="QqS-e4-DR5" userLabel="Stack View Authentication">
-                                <rect key="frame" x="32" y="304" width="350" height="168"/>
+                                <rect key="frame" x="32" y="304" width="350" height="214"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Y5J-Ux-Af6" userLabel="Text Field Email">
                                         <rect key="frame" x="0.0" y="0.0" width="350" height="30"/>
@@ -67,11 +67,13 @@
                                             </button>
                                         </subviews>
                                     </stackView>
+                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="ZdG-1b-Bii">
+                                        <rect key="frame" x="165" y="184" width="20" height="30"/>
+                                    </activityIndicatorView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="b2r-of-Jlg" secondAttribute="trailing" id="0Jx-rT-UeW"/>
                                     <constraint firstItem="26f-mv-Bzf" firstAttribute="width" secondItem="QqS-e4-DR5" secondAttribute="width" id="Bnj-yk-26A"/>
-                                    <constraint firstAttribute="bottom" secondItem="b2r-of-Jlg" secondAttribute="bottom" id="b4n-xn-brb"/>
                                     <constraint firstItem="b2r-of-Jlg" firstAttribute="leading" secondItem="QqS-e4-DR5" secondAttribute="leading" id="f1w-aA-1pt"/>
                                     <constraint firstItem="2Bl-md-XTa" firstAttribute="width" secondItem="QqS-e4-DR5" secondAttribute="width" id="ptT-Ns-Y7P"/>
                                     <constraint firstItem="Y5J-Ux-Af6" firstAttribute="width" secondItem="QqS-e4-DR5" secondAttribute="width" id="r6Z-d9-nOK"/>
@@ -90,6 +92,10 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="ZdG-1b-Bii" id="MQI-b8-0mc"/>
+                        <outlet property="emailTextField" destination="Y5J-Ux-Af6" id="JIQ-q0-miy"/>
+                        <outlet property="loginButton" destination="26f-mv-Bzf" id="xND-Ga-NFj"/>
+                        <outlet property="passwordTextField" destination="2Bl-md-XTa" id="Bw0-q2-clV"/>
                         <segue destination="QYl-zH-Lzk" kind="presentation" identifier="loginSegue" id="Chc-4q-2ZN"/>
                     </connections>
                 </viewController>
@@ -109,14 +115,22 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                                 <items>
                                     <navigationItem title="On The Map" id="ki1-V9-cVO">
-                                        <barButtonItem key="leftBarButtonItem" title="LOGOUT" id="8eI-qH-6G7"/>
+                                        <barButtonItem key="leftBarButtonItem" title="LOGOUT" id="8eI-qH-6G7">
+                                            <connections>
+                                                <action selector="logoutClicked:" destination="jmN-jO-1Zr" id="qE0-95-jkq"/>
+                                            </connections>
+                                        </barButtonItem>
                                         <rightBarButtonItems>
                                             <barButtonItem title="Item" image="icon_addpin" id="L7s-64-tae">
                                                 <connections>
                                                     <action selector="AddLocationClicked:" destination="jmN-jO-1Zr" id="2Ev-5i-a1T"/>
                                                 </connections>
                                             </barButtonItem>
-                                            <barButtonItem title="Item" image="icon_refresh" id="2OB-6y-uh8"/>
+                                            <barButtonItem title="Item" image="icon_refresh" id="2OB-6y-uh8">
+                                                <connections>
+                                                    <action selector="refreshClicked:" destination="jmN-jO-1Zr" id="5p6-Ss-bXG"/>
+                                                </connections>
+                                            </barButtonItem>
                                         </rightBarButtonItems>
                                     </navigationItem>
                                 </items>
@@ -210,14 +224,22 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <navigationItem title="On The Map" id="VHE-MM-8cp">
-                                        <barButtonItem key="leftBarButtonItem" title="LOGOUT" id="1jf-c0-Rb7"/>
+                                        <barButtonItem key="leftBarButtonItem" title="LOGOUT" id="1jf-c0-Rb7">
+                                            <connections>
+                                                <action selector="logoutClicked:" destination="Od4-OU-1cw" id="03d-2l-zaK"/>
+                                            </connections>
+                                        </barButtonItem>
                                         <rightBarButtonItems>
                                             <barButtonItem title="Item" image="icon_addpin" id="nQA-gx-gsw">
                                                 <connections>
                                                     <action selector="AddLocationClicked:" destination="Od4-OU-1cw" id="QTn-rb-SZB"/>
                                                 </connections>
                                             </barButtonItem>
-                                            <barButtonItem title="Item" image="icon_refresh" id="zHi-kJ-bFJ"/>
+                                            <barButtonItem title="Item" image="icon_refresh" id="zHi-kJ-bFJ">
+                                                <connections>
+                                                    <action selector="refreshClicked:" destination="Od4-OU-1cw" id="0cy-YN-JWq"/>
+                                                </connections>
+                                            </barButtonItem>
                                         </rightBarButtonItems>
                                     </navigationItem>
                                 </items>

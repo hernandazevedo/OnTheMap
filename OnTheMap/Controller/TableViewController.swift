@@ -22,6 +22,13 @@ class TableViewController: UIViewController {
         }
     }
     
+    @IBAction func refreshClicked(_ sender: Any) {
+    }
+    
+    @IBAction func logoutClicked(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     @IBAction func AddLocationClicked(_ sender: Any) {
         navigateToAddLocationViewController()
     }
