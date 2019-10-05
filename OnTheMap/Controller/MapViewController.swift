@@ -103,7 +103,7 @@ extension MapViewController : MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         if control == view.rightCalloutAccessoryView {
-            ApplicationUtils.openUrl(url: view.annotation?.subtitle)
+            ApplicationUtils.openUrl(viewController: self, url: view.annotation?.subtitle)
         }
     }
 }

@@ -9,16 +9,32 @@
 import UIKit
 
 class ApplicationUtils {
-    static func openUrl(url: String??) {
+    fileprivate static func fixUrlHttp(_ toOpen: inout String) {
+        if !toOpen.contains("http") {
+            toOpen = "http://" + toOpen
+        }
+    }
+    
+    static func openUrl(viewController: UIViewController, url: String??) {
         let app = UIApplication.shared
-        if let toOpen = url! {
+        let emptyString = "Cannot open empty url"
+        guard var toOpen = url! else {
+            ApplicationUtils.showError(viewController: viewController, title: "Url Error", message: emptyString)
+            return
+        }
+        
+        toOpen = toOpen.trimmingCharacters(in: NSCharacterSet.whitespaces)
+        if (toOpen != "" && toOpen != "nil") {
+            fixUrlHttp(&toOpen)
             app.open(URL(string: toOpen)!, options: [:], completionHandler: nil)
+        } else {
+            ApplicationUtils.showError(viewController: viewController, title: "Url Error", message: emptyString)
         }
     }
     
     static func showError(viewController: UIViewController, title: String ,message: String) {
             let alertVC = UIAlertController(title: title, message: message, preferredStyle: .alert)
             alertVC.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-            viewController.show(alertVC, sender: nil)
+            viewController.present(alertVC, animated: true, completion: nil)
     }
 }
