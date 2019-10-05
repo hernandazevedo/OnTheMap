@@ -57,7 +57,15 @@ class MapViewController: UIViewController {
     }
     
     @IBAction func logoutClicked(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+        ApiClient.logout(completion: handleLogoutResponse(success:error:))
+    }
+    
+    func handleLogoutResponse(success: Bool, error: Error?) {
+         if (success) {
+            self.dismiss(animated: true, completion: nil)
+        } else {
+            ApplicationUtils.showError(viewController: self, title: "Logout Error", message: error?.localizedDescription ?? "")
+        }
     }
     
     @IBAction func AddLocationClicked(_ sender: Any) {

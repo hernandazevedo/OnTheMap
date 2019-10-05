@@ -18,10 +18,11 @@ class ApiClient {
         static let base = "https://onthemap-api.udacity.com/v1"
         
         case login
+        case logout
         
         var stringValue: String {
             switch self {
-            case .login: return Endpoints.base + "/session"
+            case .login, .logout: return Endpoints.base + "/session"
             }
         }
         
@@ -45,24 +46,24 @@ class ApiClient {
             }
             
             
-            guard let data = data else {
+            guard var data = data else {
                 DispatchQueue.main.async {
                     completion(nil, error)
                 }
                 return
             }
          
-            let newData = fixResponseData(data: data)
+            data = fixResponseData(data: data)
             
             let decoder = JSONDecoder()
             do {
-                let responseObject = try decoder.decode(ResponseType.self, from: newData)
+                let responseObject = try decoder.decode(ResponseType.self, from: data)
                 DispatchQueue.main.async {
                     completion(responseObject, nil)
                 }
             } catch {
                 do {
-                    let errorResponse = try decoder.decode(ErrorResponse.self, from: newData) as Error
+                    let errorResponse = try decoder.decode(ErrorResponse.self, from: data) as Error
                     DispatchQueue.main.async {
                         completion(nil, errorResponse)
                     }
@@ -92,5 +93,37 @@ class ApiClient {
                 completion(false, error)
             }
         }
+    }
+    
+    class func logout(completion: @escaping (Bool, Error?) -> Void) {
+        var request = URLRequest(url: Endpoints.logout.url)
+        request.httpMethod = "DELETE"
+        var xsrfCookie: HTTPCookie? = nil
+        let sharedCookieStorage = HTTPCookieStorage.shared
+        for cookie in sharedCookieStorage.cookies! {
+            if cookie.name == "XSRF-TOKEN" { xsrfCookie = cookie }
+        }
+        if let xsrfCookie = xsrfCookie {
+            request.setValue(xsrfCookie.value, forHTTPHeaderField: "X-XSRF-TOKEN")
+        }
+        let session = URLSession.shared
+        let task = session.dataTask(with: request) { data, response, error in
+            if error != nil {
+                DispatchQueue.main.async {
+                    completion(false, error)
+                }
+                return
+            }
+            ApiClient.Auth.sessionId = ""
+            guard var data = data else {
+                return
+            }
+            data = fixResponseData(data: data)
+            print(String(data: data, encoding: .utf8) ?? "")
+            DispatchQueue.main.async {
+                completion(true, nil)
+            }
+        }
+        task.resume()
     }
 }
