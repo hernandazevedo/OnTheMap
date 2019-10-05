@@ -19,16 +19,63 @@ class ApiClient {
         
         case login
         case logout
+        case getStudents(Int)
         
         var stringValue: String {
             switch self {
-            case .login, .logout: return Endpoints.base + "/session"
+            case .login, .logout:
+                return Endpoints.base + "/session"
+            //https://onthemap-api.udacity.com/v1/StudentLocation?limit=100
+            case .getStudents(let limit):
+                return Endpoints.base + "/StudentLocation?order=-updatedAt&limit=\(limit)"
             }
         }
         
         var url: URL {
             return URL(string: stringValue)!
         }
+    }
+    
+    class func taskForGETRequest<ResponseType: Decodable>(url: URL, responseType: ResponseType.Type, completion: @escaping (ResponseType?, Error?) -> Void) -> URLSessionDataTask {
+        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+            if error != nil {
+                DispatchQueue.main.async {
+                    completion(nil, error)
+                }
+                return
+            }
+            
+            guard let data = data else {
+                DispatchQueue.main.async {
+                    completion(nil, error)
+                }
+                return
+            }
+            
+            print(String(data: data, encoding: .utf8)!)
+
+            let decoder = JSONDecoder()
+            do {
+                let responseObject = try decoder.decode(ResponseType.self, from: data)
+                DispatchQueue.main.async {
+                    completion(responseObject, nil)
+                }
+            } catch {
+                do {
+                    let errorResponse = try decoder.decode(ErrorResponse.self, from: data) as Error
+                    DispatchQueue.main.async {
+                        completion(nil, errorResponse)
+                    }
+                } catch {
+                    DispatchQueue.main.async {
+                        completion(nil, error)
+                    }
+                }
+            }
+        }
+        task.resume()
+        
+        return task
     }
     
     class func taskForPOSTRequest<RequestType: Encodable, ResponseType: Decodable>(url: URL, responseType: ResponseType.Type, body: RequestType, completion: @escaping (ResponseType?, Error?) -> Void) {
@@ -91,6 +138,16 @@ class ApiClient {
                 completion(true, nil)
             } else {
                 completion(false, error)
+            }
+        }
+    }
+    
+    class func getStudents(completion: @escaping ([StudentInformation], Error?) -> Void) {
+        _ = taskForGETRequest(url: Endpoints.getStudents(100).url, responseType: StudentResults.self) { response, error in
+            if let response = response {
+                completion(response.results, nil)
+            } else {
+                completion([], error)
             }
         }
     }
