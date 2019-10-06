@@ -32,9 +32,20 @@ class ApplicationUtils {
         }
     }
     
-    static func showError(viewController: UIViewController, title: String ,message: String) {
+    static func showError(viewController: UIViewController, title: String, message: String) {
             let alertVC = UIAlertController(title: title, message: message, preferredStyle: .alert)
             alertVC.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             viewController.present(alertVC, animated: true, completion: nil)
+    }
+    
+    static func showYesCancelWithCompletion(viewController: UIViewController, title: String, message: String, completion: @escaping (Bool) -> Void) {
+        let alertVC = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alertVC.addAction(UIAlertAction(title: "YES", style: .default, handler: { (alert) in
+            DispatchQueue.main.async {
+                completion(true)
+            }
+        }))
+        alertVC.addAction(UIAlertAction(title: "CANCEL", style: .cancel, handler: nil))
+        viewController.present(alertVC, animated: true, completion: nil)
     }
 }

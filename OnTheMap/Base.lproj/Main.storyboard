@@ -322,8 +322,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <action selector="loginClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9zC-7y-yBE"/>
-                                            <segue destination="0Gb-nU-vzn" kind="show" id="iDx-K6-RlM"/>
+                                            <action selector="findLocationClicked:" destination="vIA-0E-zpn" eventType="touchUpInside" id="UHb-ug-AQi"/>
                                         </connections>
                                     </button>
                                     <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="YYP-tX-mOJ">
@@ -367,6 +366,9 @@
                     <connections>
                         <outlet property="activityIndicatorView" destination="YYP-tX-mOJ" id="Ayd-Jc-BQ5"/>
                         <outlet property="findLocationButton" destination="NGX-Kl-GyA" id="v4c-Nn-X9H"/>
+                        <outlet property="linkTextField" destination="4ty-Yj-cwD" id="L4f-rx-EHt"/>
+                        <outlet property="locationTextField" destination="C0a-vP-yq3" id="Cxl-vP-Wnk"/>
+                        <segue destination="0Gb-nU-vzn" kind="show" identifier="completeLocationSegue" id="619-Wc-WzO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tjh-9u-Itt" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -404,7 +406,6 @@
                                 </state>
                                 <connections>
                                     <action selector="finishClicked:" destination="0Gb-nU-vzn" eventType="touchUpInside" id="KqE-gO-xSd"/>
-                                    <action selector="loginClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="45m-Lt-R3x"/>
                                 </connections>
                             </button>
                         </subviews>

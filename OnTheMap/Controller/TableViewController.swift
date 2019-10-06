@@ -17,8 +17,11 @@ class TableViewController: UIViewController {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        ApiClient.getStudents(completion: handleGetStudentsResponse(students:error:))
         // Do any additional setup after loading the view.
+    }
+    
+    private func getStudentList() {
+        ApiClient.getStudents(completion: handleGetStudentsResponse(students:error:))
     }
     
     func handleGetStudentsResponse(students: [StudentInformation], error: Error?) {
@@ -32,7 +35,7 @@ class TableViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        reloadTable()
+        getStudentList()
     }
     
     private func reloadTable() {
@@ -46,7 +49,7 @@ class TableViewController: UIViewController {
     }
     
     @IBAction func refreshClicked(_ sender: Any) {
-        ApiClient.getStudents(completion: handleGetStudentsResponse(students:error:))
+        getStudentList()
     }
     
     @IBAction func logoutClicked(_ sender: Any) {
@@ -62,7 +65,15 @@ class TableViewController: UIViewController {
     }
     
     @IBAction func AddLocationClicked(_ sender: Any) {
-        navigateToAddLocationViewController()
+        if StudentModel.userObjectId != nil {
+            ApplicationUtils.showYesCancelWithCompletion(viewController: self, title: "Confirm update?", message: "Confirm update current location?") { (success) in
+                if success {
+                    self.navigateToAddLocationViewController()
+                }
+            }
+        } else {
+            navigateToAddLocationViewController()
+        }
     }
 }
 

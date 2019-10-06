@@ -10,4 +10,5 @@ import Foundation
 
 class StudentModel {
     static var students = [StudentInformation]()
+    static var userObjectId: String?
 }

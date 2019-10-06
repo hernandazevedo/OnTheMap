@@ -7,11 +7,15 @@
 //
 
 import UIKit
+import CoreLocation
 
 class AddLocationViewController: UIViewController {
 
+    @IBOutlet weak var locationTextField: UITextField!
     @IBOutlet weak var findLocationButton: RoundedButton!
+    @IBOutlet weak var linkTextField: UITextField!
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
+    var placemark: CLPlacemark?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +31,49 @@ class AddLocationViewController: UIViewController {
         }
         
         findLocationButton.isEnabled = !loading
+    }
+    
+    
+    @IBAction func findLocationClicked(_ sender: Any) {
+        
+        if isValidFields() {
+            setLoading(true)
+            CLGeocoder().geocodeAddressString((locationTextField.text)!) { (placemarks, error) in
+                guard let placemarks = placemarks else {
+                    DispatchQueue.main.async {
+                        self.setLoading(false)
+                        ApplicationUtils.showError(viewController: self, title: "Geocode Error", message: "Error finding location!")
+                    }
+                    return
+                }
+                self.placemark = placemarks.first
+                DispatchQueue.main.async {
+                    self.setLoading(false)
+                    self.performSegue(withIdentifier: "completeLocationSegue", sender: self)
+                }
+            }
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "completeLocationSegue" {
+            let vc = segue.destination as! CompleteLocationViewController
+            vc.placemark = placemark
+            vc.mediaUrl = linkTextField.text
+            vc.locationText = locationTextField.text
+        }
+    }
+    
+    func isValidFields() -> Bool {
+        if locationTextField.text == "" {
+            ApplicationUtils.showError(viewController: self, title: "Validation error", message: "Location cannot be empty")
+            return false
+        } else if linkTextField.text == "" {
+            ApplicationUtils.showError(viewController: self, title: "Validation error", message: "Link cannot be empty")
+            return false
+        } else {
+            return true
+        }
     }
     
     func handleUserDataResponse(success: Bool, error: Error?) {

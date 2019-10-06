@@ -27,6 +27,9 @@
 		9F51EF242348DA38007F3075 /* StudentResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F51EF232348DA38007F3075 /* StudentResults.swift */; };
 		9F51EF262348DFC8007F3075 /* StudentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F51EF252348DFC8007F3075 /* StudentModel.swift */; };
 		9F51EF292349F7D9007F3075 /* StudentPublicInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F51EF282349F7D9007F3075 /* StudentPublicInformation.swift */; };
+		9F51EF2B234A09DD007F3075 /* AddLocationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F51EF2A234A09DD007F3075 /* AddLocationRequest.swift */; };
+		9F51EF2D234A0AEC007F3075 /* AddLocationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F51EF2C234A0AEC007F3075 /* AddLocationResponse.swift */; };
+		9F51EF2F234A0C88007F3075 /* UpdateLocationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F51EF2E234A0C87007F3075 /* UpdateLocationResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +55,9 @@
 		9F51EF232348DA38007F3075 /* StudentResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentResults.swift; sourceTree = "<group>"; };
 		9F51EF252348DFC8007F3075 /* StudentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StudentModel.swift; path = ../StudentModel.swift; sourceTree = "<group>"; };
 		9F51EF282349F7D9007F3075 /* StudentPublicInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentPublicInformation.swift; sourceTree = "<group>"; };
+		9F51EF2A234A09DD007F3075 /* AddLocationRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLocationRequest.swift; sourceTree = "<group>"; };
+		9F51EF2C234A0AEC007F3075 /* AddLocationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLocationResponse.swift; sourceTree = "<group>"; };
+		9F51EF2E234A0C87007F3075 /* UpdateLocationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateLocationResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +151,8 @@
 				9F51EF212348D9BA007F3075 /* StudentInformation.swift */,
 				9F51EF232348DA38007F3075 /* StudentResults.swift */,
 				9F51EF282349F7D9007F3075 /* StudentPublicInformation.swift */,
+				9F51EF2C234A0AEC007F3075 /* AddLocationResponse.swift */,
+				9F51EF2E234A0C87007F3075 /* UpdateLocationResponse.swift */,
 			);
 			path = "Api Responses";
 			sourceTree = "<group>";
@@ -153,6 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				9F51EF1823476AE3007F3075 /* LoginRequest.swift */,
+				9F51EF2A234A09DD007F3075 /* AddLocationRequest.swift */,
 			);
 			path = "Api Requests";
 			sourceTree = "<group>";
@@ -238,6 +247,8 @@
 			files = (
 				9F51EF222348D9BA007F3075 /* StudentInformation.swift in Sources */,
 				9F51EF132347678A007F3075 /* SessionResponse.swift in Sources */,
+				9F51EF2F234A0C88007F3075 /* UpdateLocationResponse.swift in Sources */,
+				9F51EF2B234A09DD007F3075 /* AddLocationRequest.swift in Sources */,
 				9F16EA5F2343809600C4A9C1 /* CompleteLocationViewController.swift in Sources */,
 				9F16EA632343BC9800C4A9C1 /* TableViewController.swift in Sources */,
 				9F51EF1923476AE3007F3075 /* LoginRequest.swift in Sources */,
@@ -251,6 +262,7 @@
 				9F16EA692347597A00C4A9C1 /* ApplicationUtils.swift in Sources */,
 				9F16EA5D23437A2100C4A9C1 /* AddLocationViewController.swift in Sources */,
 				9F16EA6B23475B3E00C4A9C1 /* Constants.swift in Sources */,
+				9F51EF2D234A0AEC007F3075 /* AddLocationResponse.swift in Sources */,
 				9F51EF11234763A9007F3075 /* ApiClient.swift in Sources */,
 				9F51EF1D23476E75007F3075 /* ErrorResponse.swift in Sources */,
 			);

@@ -11,24 +11,69 @@ import MapKit
 class CompleteLocationViewController: UIViewController {
     
     @IBOutlet weak var mapView: MKMapView!
+    var placemark: CLPlacemark?
+    var mediaUrl: String?
+    var locationText: String?
     override func viewDidLoad() {
         super.viewDidLoad()
-        let annotation = MKPointAnnotation()
-        let coordinate = CLLocationCoordinate2D(latitude: 35.1740471, longitude: -79.3922539)
-        annotation.coordinate = coordinate
-        annotation.title = "Southern Pines, NC"
-        self.mapView.addAnnotation(annotation)
+        guard let placemark = placemark else {
+            return
+        }
+        
+        setAnnotation(placemark: placemark)
 
         self.mapView.delegate = self
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        self.mapView.showAnnotations(mapView.annotations, animated: true)
+    func setAnnotation(placemark: CLPlacemark) {
+        guard let coordinate = placemark.location?.coordinate else {
+            return
+        }
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = coordinate
+        annotation.title = "\(placemark.name ?? ""), \(placemark.country ?? "")"
+        DispatchQueue.main.async {
+            self.mapView.addAnnotation(annotation)
+            self.mapView.showAnnotations(self.mapView.annotations, animated: true)
+        }
+    }
+    
+    // MARK: Following will set the region, to focus on the map where the annotation placed.
+    func setRegion(with placemark: CLPlacemark) {
+        guard let coordinate = placemark.location?.coordinate else {
+            return
+        }
+        let userLocation: CLLocationCoordinate2D = coordinate
+        let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+        let region: MKCoordinateRegion = MKCoordinateRegion(center: userLocation, span: span)
+        
+        DispatchQueue.main.async {
+            self.mapView.setRegion(region, animated: true)
+        }
     }
     
     @IBAction func finishClicked(_ sender: Any) {
-        navigateToTabBarViewController()
+        guard let coordinate = placemark?.location?.coordinate else {
+            return
+        }
+        
+        let userLocationRequest = AddLocationRequest(uniqueKey: ApiClient.Auth.userId, firstName: ApiClient.Auth.userFirstName, lastName: ApiClient.Auth.userLastName, mapString: locationText ?? "", mediaURL: mediaUrl ?? "", latitude: coordinate.latitude, longitude: coordinate.longitude)
+        
+        if StudentModel.userObjectId == nil {
+            ApiClient.addLocation(userLocationRequest: userLocationRequest, completion: handleUserLocationResponse(success:error:))
+        } else {
+            ApiClient.updateLocation(userLocationRequest: userLocationRequest, completion: handleUserLocationResponse(success:error:))
+        }
+
+    }
+    
+    func handleUserLocationResponse(success: Bool, error: Error?) {
+        
+        if success {
+            navigateToTabBarViewController()
+        } else {
+            ApplicationUtils.showError(viewController: self, title: "Add Location Error", message: error?.localizedDescription ?? "")
+        }
     }
     
     @IBAction func backNavigationClicked(_ sender: Any) {

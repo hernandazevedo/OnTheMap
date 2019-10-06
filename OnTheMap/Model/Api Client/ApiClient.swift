@@ -24,6 +24,8 @@ class ApiClient {
         case logout
         case getStudents(Int)
         case getPublicUserData
+        case addLocation
+        case updateLocation
         
         var stringValue: String {
             switch self {
@@ -34,6 +36,10 @@ class ApiClient {
                 return Endpoints.base + "/StudentLocation?order=-updatedAt&limit=\(limit)"
             case .getPublicUserData:
                 return Endpoints.base + "/users/\(Auth.userId)"
+            case .addLocation:
+                return Endpoints.base + "/StudentLocation"
+            case .updateLocation:
+                return Endpoints.base + "/StudentLocation/\(StudentModel.userObjectId!)"
             }            
         }
         
@@ -85,8 +91,16 @@ class ApiClient {
     }
     
     class func taskForPOSTRequest<RequestType: Encodable, ResponseType: Decodable>(url: URL, responseType: ResponseType.Type, body: RequestType, completion: @escaping (ResponseType?, Error?) -> Void) {
+        taskForRequest(shouldFixResponseData: true, method: "POST", url: url, responseType: responseType, body: body, completion: completion)
+    }
+    
+    class func taskForPUTRequest<RequestType: Encodable, ResponseType: Decodable>(url: URL, responseType: ResponseType.Type, body: RequestType, completion: @escaping (ResponseType?, Error?) -> Void) {
+        taskForRequest(shouldFixResponseData: true, method: "PUT", url: url, responseType: responseType, body: body, completion: completion)
+    }
+    
+    class func taskForRequest<RequestType: Encodable, ResponseType: Decodable>(shouldFixResponseData: Bool, method: String, url: URL, responseType: ResponseType.Type, body: RequestType, completion: @escaping (ResponseType?, Error?) -> Void) {
         var request = URLRequest(url: url)
-        request.httpMethod = "POST"
+        request.httpMethod = method
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         request.httpBody = try! JSONEncoder().encode(body)
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -106,8 +120,11 @@ class ApiClient {
                 return
             }
          
-            data = fixResponseData(data: data)
-            
+            if shouldFixResponseData {
+                data = fixResponseData(data: data)
+            }
+            print(String(data: data, encoding: .utf8) ?? "")
+
             let decoder = JSONDecoder()
             do {
                 let responseObject = try decoder.decode(ResponseType.self, from: data)
@@ -143,6 +160,33 @@ class ApiClient {
                 Auth.sessionId = response.session.id
                 Auth.userId = response.account.key
                 completion(true, nil)
+            } else {
+                completion(false, error)
+            }
+        }
+    }
+    
+    class func addLocation(userLocationRequest: AddLocationRequest, completion: @escaping (Bool, Error?) -> Void) {
+    
+        taskForRequest(shouldFixResponseData: false, method: "POST", url: Endpoints.addLocation.url, responseType: AddLocationResponse.self, body: userLocationRequest) { response, error in
+            if let response = response {
+                StudentModel.userObjectId = response.objectId
+                completion(true, nil)
+            } else {
+                completion(false, error)
+            }
+        }
+    }
+    
+    class func updateLocation(userLocationRequest: AddLocationRequest, completion: @escaping (Bool, Error?) -> Void) {
+        
+        taskForRequest(shouldFixResponseData: false, method: "PUT", url: Endpoints.updateLocation.url, responseType: UpdateLocationResponse.self, body: userLocationRequest) { response, error in
+            if let response = response {
+                if response.updatedAt != "" {
+                    completion(true, nil)
+                } else {
+                    completion(false, ErrorResponse(status: -1, error: "Cound not update user location"))
+                }
             } else {
                 completion(false, error)
             }

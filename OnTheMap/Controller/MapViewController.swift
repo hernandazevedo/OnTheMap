@@ -12,9 +12,10 @@ import MapKit
 class MapViewController: UIViewController {
 
     @IBOutlet weak var mapView: MKMapView!
+   
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        ApiClient.getStudents(completion: handleGetStudentsResponse(students:error:))
         self.mapView.delegate = self
     }
     
@@ -26,6 +27,14 @@ class MapViewController: UIViewController {
             StudentModel.students = students
             loadAnnotations()
         }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        getStudentsList()
+    }
+    
+    private func getStudentsList() {
+        ApiClient.getStudents(completion: handleGetStudentsResponse(students:error:))
     }
     
     func loadAnnotations() {
@@ -49,7 +58,9 @@ class MapViewController: UIViewController {
             
             annotations.append(annotation)
         }
-        
+        if !self.mapView.annotations.isEmpty {
+            self.mapView.removeAnnotations(mapView.annotations)
+        }
         self.mapView.addAnnotations(annotations)
         self.mapView.showAnnotations(mapView.annotations, animated: true)
     }
@@ -61,7 +72,7 @@ class MapViewController: UIViewController {
     }
     
     @IBAction func refreshClicked(_ sender: Any) {
-        ApiClient.getStudents(completion: handleGetStudentsResponse(students:error:))
+        getStudentsList()
     }
     
     @IBAction func logoutClicked(_ sender: Any) {
@@ -77,7 +88,15 @@ class MapViewController: UIViewController {
     }
     
     @IBAction func AddLocationClicked(_ sender: Any) {
-        navigateToAddLocationViewController()
+        if StudentModel.userObjectId != nil {
+            ApplicationUtils.showYesCancelWithCompletion(viewController: self, title: "Confirm update?", message: "Confirm update current location?") { (success) in
+                if success {
+                    self.navigateToAddLocationViewController()
+                }
+            }
+        } else {
+            navigateToAddLocationViewController()
+        }
     }
     
 }
