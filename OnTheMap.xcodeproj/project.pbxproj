@@ -26,6 +26,7 @@
 		9F51EF222348D9BA007F3075 /* StudentInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F51EF212348D9BA007F3075 /* StudentInformation.swift */; };
 		9F51EF242348DA38007F3075 /* StudentResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F51EF232348DA38007F3075 /* StudentResults.swift */; };
 		9F51EF262348DFC8007F3075 /* StudentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F51EF252348DFC8007F3075 /* StudentModel.swift */; };
+		9F51EF292349F7D9007F3075 /* StudentPublicInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F51EF282349F7D9007F3075 /* StudentPublicInformation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		9F51EF212348D9BA007F3075 /* StudentInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentInformation.swift; sourceTree = "<group>"; };
 		9F51EF232348DA38007F3075 /* StudentResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentResults.swift; sourceTree = "<group>"; };
 		9F51EF252348DFC8007F3075 /* StudentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StudentModel.swift; path = ../StudentModel.swift; sourceTree = "<group>"; };
+		9F51EF282349F7D9007F3075 /* StudentPublicInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentPublicInformation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +144,7 @@
 				9F51EF1C23476E75007F3075 /* ErrorResponse.swift */,
 				9F51EF212348D9BA007F3075 /* StudentInformation.swift */,
 				9F51EF232348DA38007F3075 /* StudentResults.swift */,
+				9F51EF282349F7D9007F3075 /* StudentPublicInformation.swift */,
 			);
 			path = "Api Responses";
 			sourceTree = "<group>";
@@ -243,6 +246,7 @@
 				9F16EA4A2340F43A00C4A9C1 /* LoginViewController.swift in Sources */,
 				9F16EA482340F43A00C4A9C1 /* AppDelegate.swift in Sources */,
 				9F16EA672347575500C4A9C1 /* RoundedButton.swift in Sources */,
+				9F51EF292349F7D9007F3075 /* StudentPublicInformation.swift in Sources */,
 				9F16EA612343BC7A00C4A9C1 /* MapViewController.swift in Sources */,
 				9F16EA692347597A00C4A9C1 /* ApplicationUtils.swift in Sources */,
 				9F16EA5D23437A2100C4A9C1 /* AddLocationViewController.swift in Sources */,

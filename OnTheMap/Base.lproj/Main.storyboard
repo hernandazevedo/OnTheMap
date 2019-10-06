@@ -301,7 +301,7 @@
                                 <rect key="frame" x="32" y="148" width="350" height="67"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Vf7-9Q-f3q" userLabel="Stack View Location">
-                                <rect key="frame" x="32" y="262" width="350" height="122"/>
+                                <rect key="frame" x="32" y="262" width="350" height="168"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="C0a-vP-yq3" userLabel="Text Field Location">
                                         <rect key="frame" x="0.0" y="0.0" width="350" height="30"/>
@@ -326,6 +326,9 @@
                                             <segue destination="0Gb-nU-vzn" kind="show" id="iDx-K6-RlM"/>
                                         </connections>
                                     </button>
+                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="YYP-tX-mOJ">
+                                        <rect key="frame" x="165" y="138" width="20" height="30"/>
+                                    </activityIndicatorView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="4ty-Yj-cwD" firstAttribute="width" secondItem="Vf7-9Q-f3q" secondAttribute="width" id="cQN-kS-rqm"/>
@@ -361,6 +364,10 @@
                     <navigationItem key="navigationItem" title="Add Location" id="rd1-Fc-zcF">
                         <barButtonItem key="leftBarButtonItem" title="CANCEL" id="xMQ-Am-BtZ"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="activityIndicatorView" destination="YYP-tX-mOJ" id="Ayd-Jc-BQ5"/>
+                        <outlet property="findLocationButton" destination="NGX-Kl-GyA" id="v4c-Nn-X9H"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tjh-9u-Itt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

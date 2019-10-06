@@ -12,6 +12,9 @@ class ApiClient {
     
     struct Auth {
         static var sessionId = ""
+        static var userId = ""
+        static var userFirstName = ""
+        static var userLastName = ""
     }
     
     enum Endpoints {
@@ -20,6 +23,7 @@ class ApiClient {
         case login
         case logout
         case getStudents(Int)
+        case getPublicUserData
         
         var stringValue: String {
             switch self {
@@ -28,7 +32,9 @@ class ApiClient {
             //https://onthemap-api.udacity.com/v1/StudentLocation?limit=100
             case .getStudents(let limit):
                 return Endpoints.base + "/StudentLocation?order=-updatedAt&limit=\(limit)"
-            }
+            case .getPublicUserData:
+                return Endpoints.base + "/users/\(Auth.userId)"
+            }            
         }
         
         var url: URL {
@@ -135,6 +141,7 @@ class ApiClient {
         taskForPOSTRequest(url: Endpoints.login.url, responseType: SessionResponse.self, body: body) { response, error in
             if let response = response {
                 Auth.sessionId = response.session.id
+                Auth.userId = response.account.key
                 completion(true, nil)
             } else {
                 completion(false, error)
@@ -179,6 +186,34 @@ class ApiClient {
             print(String(data: data, encoding: .utf8) ?? "")
             DispatchQueue.main.async {
                 completion(true, nil)
+            }
+        }
+        task.resume()
+    }
+    
+    class func getUserData(completion: @escaping (Bool, Error?) -> Void) {
+        let task = URLSession.shared.dataTask(with: Endpoints.getPublicUserData.url) { (data, response, error) in
+            guard var data = data else {
+                DispatchQueue.main.async {
+                    completion(false, error)
+                }
+                return
+            }
+            data = fixResponseData(data: data)
+            print(String(data: data, encoding: .utf8)!)
+            let decoder = JSONDecoder()
+            do {
+                let response = try decoder.decode(StudentPublicInformation.self, from: data)
+                Auth.userFirstName = response.firstName
+                Auth.userLastName = response.lastName
+                
+                DispatchQueue.main.async {
+                    completion(true, nil)
+                }
+            } catch {
+                DispatchQueue.main.async {
+                    completion(false, error)
+                }
             }
         }
         task.resume()
